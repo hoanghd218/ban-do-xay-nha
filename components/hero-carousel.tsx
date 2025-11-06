@@ -47,8 +47,8 @@ export function HeroCarousel() {
               <Image
                 src={slide.src}
                 alt={slide.alt}
-                width={600}
-                height={400}
+                width={1000}
+                height={600}
                 priority={index === 0}
                 className="relative rounded-2xl shadow-strong object-cover w-full h-auto"
               />

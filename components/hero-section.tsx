@@ -13,16 +13,16 @@ export function HeroSection() {
       </div>
 
       <div className="container-wide relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="flex flex-col gap-12 items-center">
           {/* Text Content */}
-          <div className="flex flex-col justify-center space-y-6">
+          <div className="flex flex-col justify-center space-y-6 w-full text-center items-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold font-merriweather leading-tight">
               Bản Đồ Xây Nhà
             </h1>
             <p className="text-xl sm:text-2xl text-blue-100 leading-relaxed max-w-lg">
               Hành trình xây nhà <span className="font-semibold">thông minh, minh bạch và hạnh phúc</span> cho mọi gia đình Việt
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
               <Link
                 href="/services"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#0066CC] font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 hover:shadow-strong"
