@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bản Đồ Xây Nhà
 
-## Getting Started
+A comprehensive platform to guide Vietnamese families through their house-building journey with knowledge, technology, and a supportive ecosystem.
 
-First, run the development server:
+## 🏗️ About
 
+**Bản Đồ Xây Nhà** (House Building Map) is designed to make the house-building process transparent, intelligent, and joyful for every Vietnamese family. We provide a knowledge map, technology, and an ecosystem connecting homeowners, contractors, architects, and suppliers.
+
+## ✨ Features
+
+- **Homepage**: Inspiring hero section with vision statement and call-to-actions
+- **Services Page**: 
+  - Free workshops and Zoom sessions
+  - Entry offers (books, courses, tools)
+  - Core coaching program (7-Day Challenge)
+  - Membership community
+- **About Page**: Mission, vision, core values, team section, and company story
+- **Consulting Page**: Free consultation form with contact methods
+- **Blog**: Knowledge base with categorized articles
+- **Testimonials**: Customer success stories with filtering
+- **Responsive Design**: Optimized for all screen sizes
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 20+ installed
+- npm or yarn package manager
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/ban-do-xay-nha.git
+cd ban-do-xay-nha
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Learn More
+### Build for Production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Framework**: Next.js 16
+- **UI Library**: React 19
+- **Styling**: Tailwind CSS 4
+- **Icons**: Lucide React
+- **Language**: TypeScript
 
-## Deploy on Vercel
+## 📁 Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+ban-do-xay-nha/
+├── app/
+│   ├── page.tsx           # Homepage
+│   ├── about/             # About page
+│   ├── services/          # Services page
+│   ├── consulting/        # Consulting page
+│   ├── blog/              # Blog page
+│   ├── layout.tsx         # Root layout
+│   └── globals.css        # Global styles
+├── components/
+│   ├── navigation.tsx     # Header navigation
+│   ├── footer.tsx         # Footer
+│   ├── testimonials.tsx   # Testimonials section
+│   └── team.tsx           # Team section
+├── lib/
+│   └── utils.ts           # Utility functions
+└── public/                # Static assets
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Customization
+
+### Colors
+
+The website uses a blue and purple gradient theme. You can customize colors in `app/globals.css` by modifying the CSS variables.
+
+### Content
+
+- Update team members in `components/team.tsx`
+- Modify testimonials in `components/testimonials.tsx`
+- Edit blog posts in `app/blog/page.tsx`
+- Customize services in `app/services/page.tsx`
+
+## 📱 Responsive Design
+
+The website is fully responsive and optimized for:
+- Mobile devices (< 768px)
+- Tablets (768px - 1024px)
+- Desktop (> 1024px)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 📞 Contact
+
+For questions or support, please contact:
+- Email: contact@bandoxaynha.vn
+- Phone: 0123 456 789
+
+## 🌟 Vision
+
+**Bản Đồ Xây Nhà** aims to create a smart, transparent, and joyful house-building journey for every Vietnamese family. The platform offers a knowledge map, technology, and an ecosystem that connects homeowners, contractors, architects, and suppliers, ensuring that each home becomes a journey to fulfilling dreams.
