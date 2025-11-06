@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { HeroCarousel } from "./hero-carousel";
 
 export function HeroSection() {
   return (
@@ -38,17 +39,10 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Image */}
-          <div className="relative hidden lg:block">
+          {/* Image Carousel */}
+          <div className="relative  lg:block">
             <div className="absolute -inset-4 rounded-2xl bg-linear-to-br from-[#00B050] to-[#FFCC00] opacity-20 blur-2xl"></div>
-            <Image
-              src="/slide-web-BẢN-ĐỒ-XÂY-NHÀ.jpg"
-              alt="Bản đồ xây nhà - dự án xây dựng"
-              width={600}
-              height={400}
-              priority
-              className="relative rounded-2xl shadow-strong object-cover"
-            />
+            <HeroCarousel />
           </div>
         </div>
       </div>
