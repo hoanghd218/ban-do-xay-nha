@@ -1,20 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Mail, MessageSquare, Calendar, CheckCircle2 } from "lucide-react";
+import { Phone, Mail, MessageSquare, Calendar, CheckCircle2, ChevronDown } from "lucide-react";
 
 export default function ConsultingPage() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
-    projectType: "",
-    budget: "",
-    timeline: "",
     message: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [openFAQs, setOpenFAQs] = useState<number | null>(null);
+
+  const toggleFAQ = (index: number) => {
+    setOpenFAQs(openFAQs === index ? null : index);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,47 +34,51 @@ export default function ConsultingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-              Tư vấn miễn phí
-            </h1>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              Đội ngũ chuyên gia sẵn sàng hỗ trợ bạn trong hành trình xây dựng ngôi nhà
-            </p>
-          </div>
+      <section className="relative bg-linear-to-b from-[#0066CC] via-[#0052A3] to-[#003d7a] text-white section-padding overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#00B050] rounded-full blur-3xl opacity-20"></div>
+        </div>
+        
+        <div className="container-wide relative text-center">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 font-merriweather leading-tight">
+            Tư vấn miễn phí
+          </h1>
+          <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+            Đội ngũ chuyên gia sẵn sàng hỗ trợ bạn trong hành trình xây dựng ngôi nhà
+          </p>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+      <section className="section-padding bg-light-gray">
+        <div className="container-wide">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 font-merriweather">
               Bạn sẽ nhận được gì?
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle2 className="text-blue-600" size={32} />
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle2 className="text-primary" size={32} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Đánh giá dự án</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-foreground mb-2 font-merriweather">Đánh giá dự án</h3>
+              <p className="text-foreground leading-relaxed">
                 Phân tích nhu cầu và đưa ra lộ trình phù hợp với dự án của bạn
               </p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Calendar className="text-green-600" size={32} />
+              <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Calendar className="text-secondary" size={32} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Lập kế hoạch</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-foreground mb-2 font-merriweather">Lập kế hoạch</h3>
+              <p className="text-foreground leading-relaxed">
                 Xây dựng timeline chi tiết cho từng giai đoạn của dự án
               </p>
             </div>
@@ -81,8 +87,8 @@ export default function ConsultingPage() {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MessageSquare className="text-purple-600" size={32} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Giải đáp thắc mắc</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-foreground mb-2 font-merriweather">Giải đáp thắc mắc</h3>
+              <p className="text-foreground leading-relaxed">
                 Tư vấn chuyên môn về mọi vấn đề liên quan đến xây dựng
               </p>
             </div>
@@ -91,8 +97,8 @@ export default function ConsultingPage() {
               <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Phone className="text-yellow-600" size={32} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Hỗ trợ liên tục</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-foreground mb-2 font-merriweather">Hỗ trợ liên tục</h3>
+              <p className="text-foreground leading-relaxed">
                 Luôn sẵn sàng đồng hành và hỗ trợ trong suốt quá trình
               </p>
             </div>
@@ -101,22 +107,22 @@ export default function ConsultingPage() {
       </section>
 
       {/* Consultation Form */}
-      <section className="py-16 bg-gray-50">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      <section className="section-padding bg-light-gray">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl shadow-strong p-8 md:p-12">
+            <div className="text-center mb-10">
+              <h2 className="text-4xl font-bold text-foreground mb-4 font-merriweather">
                 Đăng ký tư vấn miễn phí
               </h2>
-              <p className="text-gray-600">
+              <p className="text-foreground text-lg">
                 Điền thông tin bên dưới và chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ
               </p>
             </div>
 
             {submitted && (
-              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center">
-                <CheckCircle2 className="text-green-600 mr-3" size={24} />
-                <p className="text-green-800 font-medium">
+              <div className="mb-6 p-4 bg-secondary/10 border border-secondary/30 rounded-lg flex items-center">
+                <CheckCircle2 className="text-secondary mr-3" size={24} />
+                <p className="text-secondary font-medium">
                   Cảm ơn bạn! Chúng tôi sẽ liên hệ với bạn sớm nhất có thể.
                 </p>
               </div>
@@ -172,88 +178,29 @@ export default function ConsultingPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Loại dự án <span className="text-red-500">*</span>
-                </label>
-                <select
-                  name="projectType"
-                  required
-                  value={formData.projectType}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                >
-                  <option value="">Chọn loại dự án</option>
-                  <option value="new">Xây mới</option>
-                  <option value="renovation">Sửa chữa/Nâng cấp</option>
-                  <option value="extension">Mở rộng</option>
-                  <option value="interior">Nội thất</option>
-                  <option value="other">Khác</option>
-                </select>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Ngân sách dự kiến
-                  </label>
-                  <select
-                    name="budget"
-                    value={formData.budget}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">Chọn mức ngân sách</option>
-                    <option value="under500">Dưới 500 triệu</option>
-                    <option value="500-1000">500 triệu - 1 tỷ</option>
-                    <option value="1000-2000">1 tỷ - 2 tỷ</option>
-                    <option value="2000-5000">2 tỷ - 5 tỷ</option>
-                    <option value="over5000">Trên 5 tỷ</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Thời gian dự kiến
-                  </label>
-                  <select
-                    name="timeline"
-                    value={formData.timeline}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">Chọn thời gian</option>
-                    <option value="immediate">Ngay lập tức</option>
-                    <option value="1-3months">1-3 tháng</option>
-                    <option value="3-6months">3-6 tháng</option>
-                    <option value="6-12months">6-12 tháng</option>
-                    <option value="over1year">Trên 1 năm</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Mô tả chi tiết về dự án
+                  Nội dung cần tư vấn <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   name="message"
                   rows={5}
+                  required
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                  placeholder="Hãy cho chúng tôi biết thêm về dự án của bạn, những thắc mắc hoặc mong muốn..."
+                  placeholder="Hãy cho chúng tôi biết nội dung cần tư vấn, những thắc mắc hoặc mong muốn..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white font-semibold py-4 rounded-lg hover:bg-blue-700 transition-colors"
+                className="w-full bg-primary text-white font-semibold py-4 rounded-lg hover:bg-[#0052A3] transition-all duration-300 shadow-subtle hover:shadow-medium"
               >
                 Gửi yêu cầu tư vấn
               </button>
 
-              <p className="text-sm text-gray-600 text-center">
+              <p className="text-sm text-foreground text-center">
                 Bằng cách gửi form, bạn đồng ý với{" "}
-                <a href="#" className="text-blue-600 hover:underline">
+                <a href="#" className="text-primary hover:underline">
                   Chính sách bảo mật
                 </a>{" "}
                 của chúng tôi
@@ -264,36 +211,36 @@ export default function ConsultingPage() {
       </section>
 
       {/* Contact Methods */}
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+      <section className="section-padding bg-white">
+        <div className="container-wide">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 font-merriweather">
               Hoặc liên hệ trực tiếp
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-foreground">
               Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Phone className="text-blue-600" size={28} />
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="text-primary" size={28} />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Điện thoại</h3>
-              <p className="text-gray-600 mb-2">Gọi cho chúng tôi</p>
-              <a href="tel:0123456789" className="text-blue-600 font-semibold hover:underline">
+              <h3 className="text-lg font-bold text-foreground mb-2 font-merriweather">Điện thoại</h3>
+              <p className="text-foreground mb-2">Gọi cho chúng tôi</p>
+              <a href="tel:0123456789" className="text-primary font-semibold hover:underline">
                 0123 456 789
               </a>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Mail className="text-green-600" size={28} />
+              <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Mail className="text-secondary" size={28} />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Email</h3>
-              <p className="text-gray-600 mb-2">Gửi email cho chúng tôi</p>
-              <a href="mailto:contact@bandoxaynha.vn" className="text-blue-600 font-semibold hover:underline">
+              <h3 className="text-lg font-bold text-foreground mb-2 font-merriweather">Email</h3>
+              <p className="text-foreground mb-2">Gửi email cho chúng tôi</p>
+              <a href="mailto:contact@bandoxaynha.vn" className="text-primary font-semibold hover:underline">
                 contact@bandoxaynha.vn
               </a>
             </div>
@@ -302,9 +249,9 @@ export default function ConsultingPage() {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MessageSquare className="text-purple-600" size={28} />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Chat</h3>
-              <p className="text-gray-600 mb-2">Nhắn tin qua Facebook</p>
-              <a href="#" className="text-blue-600 font-semibold hover:underline">
+              <h3 className="text-lg font-bold text-foreground mb-2 font-merriweather">Chat</h3>
+              <p className="text-foreground mb-2">Nhắn tin qua Facebook</p>
+              <a href="#" className="text-primary font-semibold hover:underline">
                 Facebook Messenger
               </a>
             </div>
@@ -313,54 +260,65 @@ export default function ConsultingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+      <section className="section-padding bg-light-gray">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 font-merriweather">
               Câu hỏi thường gặp
             </h2>
           </div>
 
-          <div className="space-y-6">
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
-                Dịch vụ tư vấn có mất phí không?
-              </h3>
-              <p className="text-gray-600">
-                Buổi tư vấn đầu tiên hoàn toàn miễn phí. Chúng tôi sẽ đánh giá dự án của bạn và đưa ra lời khuyên phù hợp.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
-                Tôi sẽ được tư vấn trong bao lâu?
-              </h3>
-              <p className="text-gray-600">
-                Buổi tư vấn thường kéo dài từ 30-60 phút, tùy thuộc vào mức độ phức tạp của dự án.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
-                Tôi cần chuẩn bị gì trước buổi tư vấn?
-              </h3>
-              <p className="text-gray-600">
-                Nếu có, hãy chuẩn bị các thông tin như: diện tích đất, vị trí, ngân sách dự kiến, ý tưởng thiết kế, và bất kỳ câu hỏi nào bạn muốn được giải đáp.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
-                Sau khi tư vấn, tôi có phải mua dịch vụ của các bạn không?
-              </h3>
-              <p className="text-gray-600">
-                Hoàn toàn không. Buổi tư vấn không ràng buộc bạn phải sử dụng dịch vụ của chúng tôi. Chúng tôi chỉ muốn giúp bạn hiểu rõ hơn về dự án của mình.
-              </p>
-            </div>
+          <div className="space-y-4">
+            {[
+              {
+                question: "Dịch vụ tư vấn có mất phí không?",
+                answer: "Buổi tư vấn đầu tiên hoàn toàn miễn phí. Chúng tôi sẽ đánh giá dự án của bạn và đưa ra lời khuyên phù hợp."
+              },
+              {
+                question: "Tôi sẽ được tư vấn trong bao lâu?",
+                answer: "Buổi tư vấn thường kéo dài từ 30-60 phút, tùy thuộc vào mức độ phức tạp của dự án."
+              },
+              {
+                question: "Tôi cần chuẩn bị gì trước buổi tư vấn?",
+                answer: "Nếu có, hãy chuẩn bị các thông tin như: diện tích đất, vị trí, ngân sách dự kiến, ý tưởng thiết kế, và bất kỳ câu hỏi nào bạn muốn được giải đáp."
+              },
+              {
+                question: "Sau khi tư vấn, tôi có phải mua dịch vụ của các bạn không?",
+                answer: "Hoàn toàn không. Buổi tư vấn không ràng buộc bạn phải sử dụng dịch vụ của chúng tôi. Chúng tôi chỉ muốn giúp bạn hiểu rõ hơn về dự án của mình."
+              }
+            ].map((faq, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-subtle overflow-hidden hover:shadow-medium transition-all duration-300"
+              >
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full px-6 py-4 flex items-center justify-between hover:bg-light-gray transition-colors"
+                >
+                  <h3 className="text-lg font-bold text-foreground text-left font-merriweather">
+                    {faq.question}
+                  </h3>
+                  <ChevronDown
+                    size={24}
+                    className={`text-primary shrink-0 ml-4 transition-transform ${
+                      openFAQs === index ? "transform rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openFAQs === index && (
+                  <div className="px-6 py-4 bg-light-gray border-t border-border">
+                    <p className="text-foreground leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
     </div>
   );
 }
+
 

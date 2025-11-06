@@ -141,12 +141,12 @@ export const SocialProofSection = () => {
                 bản đồ xây nhà
               </span>
             </span>
-            <span className="block text-base md:text-lg font-normal text-muted-foreground mt-2">
+            <span className="block text-base md:text-lg font-normal text-foreground mt-2">
               <span className="font-semibold">Còn bạn thì sao?</span>
             </span>
           </h2>
 
-          <p className="text-muted-foreground max-w-2xl mx-auto mt-4">
+          <p className="text-foreground max-w-2xl mx-auto mt-4">
             Những câu chuyện thật từ những gia đình đã áp dụng thành công
           </p>
         </div>
@@ -199,11 +199,11 @@ export const SocialProofSection = () => {
                           <p className="font-semibold text-foreground text-sm">
                             {testimonial.author}
                           </p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-xs text-foreground">
                             {testimonial.project}
                           </p>
                         </div>
-                        <div className="flex items-center gap-1 text-xs text-muted-foreground bg-accent/20 px-2 py-1 rounded-full ml-2 whitespace-nowrap">
+                        <div className="flex items-center gap-1 text-xs text-foreground bg-accent/20 px-2 py-1 rounded-full ml-2 whitespace-nowrap">
                           <MapPin className="h-3 w-3" />
                           {testimonial.location}
                         </div>

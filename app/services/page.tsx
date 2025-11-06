@@ -13,24 +13,24 @@ interface ServiceCardProps {
 
 function ServiceCard({ title, description, icon, badge, cta, ctaLink, price }: ServiceCardProps) {
   return (
-    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100">
+    <div className="bg-white rounded-xl p-8 shadow-subtle hover:shadow-medium transition-all duration-300 hover:-translate-y-2 border border-border">
       {badge && (
-        <span className="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full mb-4">
+        <span className="inline-block px-3 py-1 bg-secondary/20 text-secondary text-xs font-semibold rounded-full mb-4">
           {badge}
         </span>
       )}
-      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+      <div className="w-14 h-14 bg-light-gray rounded-xl flex items-center justify-center mb-6">
         {icon}
       </div>
-      <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
-      <p className="text-gray-600 mb-4 leading-relaxed">{description}</p>
+      <h3 className="text-xl font-bold text-foreground mb-3 font-merriweather">{title}</h3>
+      <p className="text-foreground mb-6 leading-relaxed">{description}</p>
       {price && (
-        <p className="text-2xl font-bold text-blue-600 mb-4">{price}</p>
+        <p className="text-2xl font-bold text-primary mb-6">{price}</p>
       )}
       {cta && ctaLink && (
         <Link
           href={ctaLink}
-          className="inline-flex items-center justify-center w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+          className="inline-flex items-center justify-center w-full px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-[#0052A3] transition-all duration-300 shadow-subtle hover:shadow-medium"
         >
           {cta}
         </Link>
@@ -41,33 +41,37 @@ function ServiceCard({ title, description, icon, badge, cta, ctaLink, price }: S
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-              Dịch vụ của chúng tôi
-            </h1>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              Chọn gói dịch vụ phù hợp với nhu cầu của bạn
-            </p>
-          </div>
+      <section className="relative bg-linear-to-br from-[#0066CC] via-[#0052A3] to-[#003d7a] text-white section-padding overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#00B050] rounded-full blur-3xl opacity-20"></div>
+        </div>
+        
+        <div className="container-wide relative text-center">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 font-merriweather leading-tight">
+            Dịch vụ của chúng tôi
+          </h1>
+          <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+            Chọn gói dịch vụ phù hợp với nhu cầu của bạn
+          </p>
         </div>
       </section>
 
       {/* Free Offers Section */}
-      <section id="free" className="py-16 bg-gradient-to-br from-green-50 to-blue-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center px-4 py-2 bg-green-500 text-white rounded-full mb-4">
+      <section id="free" className="section-padding bg-linear-to-b from-[#00B050]/10 to-[#0066CC]/10">
+        <div className="container-wide">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center px-4 py-2 bg-secondary text-white rounded-full mb-4">
               <Gift className="w-5 h-5 mr-2" />
               <span className="font-semibold">MIỄN PHÍ</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 font-merriweather">
               Workshop & Zoom Sessions
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               Bắt đầu hành trình của bạn với các buổi workshop miễn phí
             </p>
           </div>
@@ -81,28 +85,28 @@ export default function ServicesPage() {
               cta="Đăng ký Zoom miễn phí"
               ctaLink="#zoom"
             />
-            <div className="bg-white rounded-lg p-6 shadow-md border border-gray-100">
-              <div className="flex items-center mb-4">
-                <Calendar className="text-green-600 mr-2" size={24} />
-                <h3 className="text-xl font-bold text-gray-900">Lịch Zoom hàng tuần</h3>
+            <div className="bg-white rounded-xl p-8 shadow-subtle hover:shadow-medium transition-all duration-300 border border-border">
+              <div className="flex items-center mb-6">
+                <Calendar className="text-secondary mr-2" size={24} />
+                <h3 className="text-xl font-bold text-foreground font-merriweather">Lịch Zoom hàng tuần</h3>
               </div>
               <div className="space-y-3">
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <p className="font-semibold text-gray-900">Thứ 3, 8/11/2024 - 20:00</p>
-                  <p className="text-sm text-gray-600">Giới thiệu Bản Đồ Xây Nhà</p>
+                <div className="bg-secondary/10 p-4 rounded-lg">
+                  <p className="font-semibold text-foreground">Thứ 3, 8/11/2024 - 20:00</p>
+                  <p className="text-sm text-foreground">Giới thiệu Bản Đồ Xây Nhà</p>
                 </div>
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <p className="font-semibold text-gray-900">Thứ 5, 10/11/2024 - 20:00</p>
-                  <p className="text-sm text-gray-600">Giai đoạn Ý tưởng & Thiết kế</p>
+                <div className="bg-secondary/10 p-4 rounded-lg">
+                  <p className="font-semibold text-foreground">Thứ 5, 10/11/2024 - 20:00</p>
+                  <p className="text-sm text-foreground">Giai đoạn Ý tưởng & Thiết kế</p>
                 </div>
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <p className="font-semibold text-gray-900">Thứ 7, 12/11/2024 - 10:00</p>
-                  <p className="text-sm text-gray-600">Quản lý Thi công & Giám sát</p>
+                <div className="bg-secondary/10 p-4 rounded-lg">
+                  <p className="font-semibold text-foreground">Thứ 7, 12/11/2024 - 10:00</p>
+                  <p className="text-sm text-foreground">Quản lý Thi công & Giám sát</p>
                 </div>
               </div>
               <Link
                 href="#zoom"
-                className="mt-4 inline-flex items-center justify-center w-full px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
+                className="mt-4 inline-flex items-center justify-center w-full px-6 py-3 bg-secondary text-white font-semibold rounded-lg hover:bg-[#008b3d] transition-all duration-300 shadow-subtle hover:shadow-medium"
               >
                 Xem lịch đầy đủ
               </Link>
@@ -112,13 +116,13 @@ export default function ServicesPage() {
       </section>
 
       {/* Paid Entry Offers */}
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+      <section className="section-padding bg-white">
+        <div className="container-wide">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 font-merriweather">
               Sản phẩm & Khóa học
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               Các công cụ và kiến thức chuyên sâu cho từng giai đoạn xây nhà
             </p>
           </div>
@@ -218,7 +222,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Core Offer */}
-      <section id="coaching" className="py-16 bg-gradient-to-br from-purple-50 to-pink-50">
+      <section id="coaching" className="py-16 bg-linear-to-b from-purple-50 to-pink-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center px-4 py-2 bg-purple-600 text-white rounded-full mb-4">
@@ -293,7 +297,7 @@ export default function ServicesPage() {
                 </p>
                 <Link
                   href="#coaching-form"
-                  className="inline-flex items-center justify-center px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all text-lg"
+                  className="inline-flex items-center justify-center px-10 py-4 bg-linear-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all text-lg"
                 >
                   Đăng ký ngay
                 </Link>
@@ -307,7 +311,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Continuity Offer */}
-      <section id="membership" className="py-16 bg-gradient-to-br from-yellow-50 to-orange-50">
+      <section id="membership" className="py-16 bg-linear-to-b from-yellow-50 to-orange-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center px-4 py-2 bg-orange-500 text-white rounded-full mb-4">
@@ -362,12 +366,12 @@ export default function ServicesPage() {
 
               <div className="text-center">
                 <p className="text-4xl font-bold text-orange-600 mb-2">
-                  299,000đ<span className="text-xl text-gray-600">/tháng</span>
+                  1,000,000đ<span className="text-xl text-gray-600">/tháng</span>
                 </p>
-                <p className="text-gray-600 mb-6">Hoặc 2,999,000đ/năm (tiết kiệm 20%)</p>
+                <p className="text-gray-600 mb-6">Hoặc 10,000,000đ/năm (tiết kiệm 20%)</p>
                 <Link
                   href="#membership-form"
-                  className="inline-flex items-center justify-center px-10 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-bold rounded-lg hover:from-yellow-600 hover:to-orange-600 transition-all text-lg"
+                  className="inline-flex items-center justify-center px-10 py-4 bg-linear-to-r from-yellow-500 to-orange-500 text-white font-bold rounded-lg hover:from-yellow-600 hover:to-orange-600 transition-all text-lg"
                 >
                   Tham gia cộng đồng
                 </Link>
@@ -380,24 +384,133 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Premium 1-1 Coaching */}
+      <section id="premium-coaching" className="py-16 bg-linear-to-b from-red-50 to-rose-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center px-4 py-2 bg-red-600 text-white rounded-full mb-4">
+              <Crown className="w-5 h-5 mr-2" />
+              <span className="font-semibold">PREMIUM OFFER</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Chương Trình Coaching 1-1
+            </h2>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-red-200">
+              <div className="text-center mb-6">
+                <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                  Dịch Vụ Tư Vấn Bản Đồ Xây Nhà Trọn Gói
+                </h3>
+                <p className="text-xl text-gray-600">
+                  Chương trình tư vấn đồng hành chuyên sâu 1-1, cá nhân hóa cùng chủ nhà
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <div className="bg-red-50 rounded-lg p-6">
+                  <h4 className="font-bold text-gray-900 mb-3">Bạn sẽ nhận được:</h4>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-start">
+                      <span className="text-red-600 mr-2">✓</span>
+                      Coaching 1-1 riêng với chuyên gia
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-600 mr-2">✓</span>
+                      Tư vấn cá nhân hóa dựa trên tình huống cụ thể
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-600 mr-2">✓</span>
+                      Bản đồ xây nhà chi tiết cho dự án của bạn
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-600 mr-2">✓</span>
+                      Hỗ trợ liên tục suốt quá trình xây dựng
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-600 mr-2">✓</span>
+                      Giải đáp mọi thắc mắc trong quá trình thực hiện
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-600 mr-2">✓</span>
+                      Tránh những sai lầm phổ biến khi xây dựng
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-rose-50 rounded-lg p-6">
+                  <h4 className="font-bold text-gray-900 mb-3">Phù hợp với:</h4>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-start">
+                      <span className="text-rose-600 mr-2">•</span>
+                      Chủ nhà dự án lớn, phức tạp
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-rose-600 mr-2">•</span>
+                      Người muốn tư vấn chi tiết từng bước
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-rose-600 mr-2">•</span>
+                      Dự án cần giám sát toàn bộ quy trình
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-rose-600 mr-2">•</span>
+                      Tìm kiếm mentor chuyên nghiệp tin cậy
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <p className="text-4xl font-bold text-red-600 mb-2">
+                  Liên hệ tư vấn
+                </p>
+                <p className="text-gray-600 mb-6">Giá được tùy chỉnh theo nhu cầu dự án</p>
+                <Link
+                  href="#consulting"
+                  className="inline-flex items-center justify-center px-10 py-4 bg-linear-to-r from-red-600 to-rose-600 text-white font-bold rounded-lg hover:from-red-700 hover:to-rose-700 transition-all text-lg"
+                >
+                  Yêu cầu tư vấn
+                </Link>
+                <p className="text-sm text-gray-600 mt-4">
+                  Tư vấn miễn phí 30 phút để đánh giá nhu cầu của bạn
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-16 bg-blue-600 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-            Cần tư vấn để chọn gói phù hợp?
-          </h2>
-          <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Đội ngũ chuyên gia của chúng tôi sẵn sàng hỗ trợ bạn
-          </p>
-          <Link
-            href="/consulting"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors"
-          >
-            Nhận tư vấn miễn phí
-          </Link>
+      <section className="relative section-padding bg-linear-to-br from-[#0066CC] via-[#0052A3] to-[#003d7a] text-white overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#00B050] rounded-full blur-3xl opacity-20"></div>
+        </div>
+
+        <div className="container-wide relative text-center">
+          <div className="space-y-6 max-w-3xl mx-auto">
+            <h2 className="text-4xl sm:text-5xl font-bold font-merriweather leading-tight">
+              Cần tư vấn để chọn gói phù hợp?
+            </h2>
+            <p className="text-xl text-blue-100 leading-relaxed">
+              Đội ngũ chuyên gia của chúng tôi sẵn sàng hỗ trợ bạn
+            </p>
+            <div>
+              <Link
+                href="/consulting"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#0066CC] font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 hover:shadow-strong"
+              >
+                Nhận tư vấn miễn phí
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>
   );
 }
+
 
