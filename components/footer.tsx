@@ -151,12 +151,6 @@ export default function Footer() {
               <ul className="space-y-4 text-sm">
                 <li className="flex items-start group cursor-pointer">
                   <div className="p-2 rounded-lg bg-gray-800 group-hover:bg-blue-600 transition-colors duration-300 mr-3 mt-1 flex-shrink-0">
-                    <MapPin size={16} className="text-gray-400 group-hover:text-white" />
-                  </div>
-                  <span className="text-gray-400 group-hover:text-gray-300 transition-colors">Hà Nội, Việt Nam</span>
-                </li>
-                <li className="flex items-center group cursor-pointer">
-                  <div className="p-2 rounded-lg bg-gray-800 group-hover:bg-blue-600 transition-colors duration-300 mr-3 flex-shrink-0">
                     <Phone size={16} className="text-gray-400 group-hover:text-white" />
                   </div>
                   <span className="text-gray-400 group-hover:text-gray-300 transition-colors">0988302984</span>
@@ -173,6 +167,53 @@ export default function Footer() {
                   </a>
                 </li>
               </ul>
+            </div>
+          </div>
+
+          {/* Office Locations */}
+          <div className="mt-16 border-t border-gray-700 pt-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Hanoi */}
+              <div className="space-y-3 p-4 rounded-lg bg-gray-800/50 hover:bg-gray-800 transition-colors duration-300">
+                <div className="flex items-start">
+                  <MapPin size={18} className="text-blue-400 mr-3 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-white font-semibold">Trụ sở chính</h4>
+                    <p className="text-gray-400 text-xs mt-1">Văn phòng HÀ NỘI</p>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed pl-7">
+                  B1.4 LK09. VT20 Khu Đô Thị Thanh Hà, Hà Đông, Hà Nội
+                </p>
+              </div>
+
+              {/* Da Nang */}
+              <div className="space-y-3 p-4 rounded-lg bg-gray-800/50 hover:bg-gray-800 transition-colors duration-300">
+                <div className="flex items-start">
+                  <MapPin size={18} className="text-blue-400 mr-3 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-white font-semibold">Chi nhánh Đà Nẵng</h4>
+                    <p className="text-gray-400 text-xs mt-1">Văn phòng ĐÀ NẴNG</p>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed pl-7">
+                  Số nhà 42, đường Khúc Hạo, Mân Thái, Sơn Trà, Đà Nẵng
+                </p>
+              </div>
+
+              {/* Ho Chi Minh */}
+              <div className="space-y-3 p-4 rounded-lg bg-gray-800/50 hover:bg-gray-800 transition-colors duration-300">
+                <div className="flex items-start">
+                  <MapPin size={18} className="text-blue-400 mr-3 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-white font-semibold">Chi nhánh Hồ Chí Minh</h4>
+                    <p className="text-gray-400 text-xs mt-1">Văn phòng HỒ CHÍ MINH</p>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed pl-7">
+                  Căn P16, khu đô thị Park Riverside, Thủ Đức, HCM
+                </p>
+              </div>
             </div>
           </div>
 
