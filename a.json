@@ -1,0 +1,120 @@
+{
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "chatbot",
+          "responseMode": "json",
+          "responseData": "all",
+          "webhookDescription": "Handles incoming messages from chatbot"
+        },
+        "name": "Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 1,
+        "position": [300, 300]
+      },
+      {
+        "parameters": {
+          "model": "gpt-4",
+          "messages": [
+            {
+              "role": "system",
+              "content": "You are a helpful assistant for Windy City Ice Cream. Answer questions about the services, pricing, and product details."
+            },
+            {
+              "role": "user",
+              "content": "{{$json['body']['message']}}"
+            }
+          ]
+        },
+        "name": "OpenAI GPT-4o",
+        "type": "n8n-nodes-base.openAi",
+        "typeVersion": 1,
+        "position": [600, 300],
+        "credentials": {
+          "openAiApiKey": "your_openai_api_key"
+        }
+      },
+      {
+        "parameters": {
+          "functionCode": "const eventDuration = $json['body']['eventDuration'] || 0;\nconst travelTime = $json['body']['travelTime'] || 0;\nconst numIceCreams = $json['body']['numIceCreams'] || 0;\nconst taxRate = $json['body']['taxRate'] || 0;\n\nconst truckFee = 80 * eventDuration;\nconst distanceFee = travelTime <= 30 ? 0 : (travelTime <= 45 ? 25 : (travelTime <= 60 ? 50 : 100));\nconst iceCreamCost = numIceCreams * 4;\nconst tax = (iceCreamCost * taxRate) / 100;\nconst totalCost = truckFee + distanceFee + iceCreamCost + tax;\n\nreturn { json: { totalCost: totalCost } };"
+        },
+        "name": "Price Calculation",
+        "type": "n8n-nodes-base.function",
+        "typeVersion": 1,
+        "position": [900, 300]
+      },
+      {
+        "parameters": {
+          "operation": "set",
+          "set": [
+            {
+              "key": "responseMessage",
+              "value": "The estimated cost for your event is: ${{$json['totalCost']}}"
+            }
+          ]
+        },
+        "name": "Set Response Message",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 1,
+        "position": [1200, 300]
+      },
+      {
+        "parameters": {
+          "webhookId": "{{$json['webhookId']}}",
+          "responseData": "={{$json['responseMessage']}}"
+        },
+        "name": "Send Response",
+        "type": "n8n-nodes-base.webhookResponse",
+        "typeVersion": 1,
+        "position": [1500, 300]
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "OpenAI GPT-4o",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI GPT-4o": {
+        "main": [
+          [
+            {
+              "node": "Price Calculation",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Price Calculation": {
+        "main": [
+          [
+            {
+              "node": "Set Response Message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Response Message": {
+        "main": [
+          [
+            {
+              "node": "Send Response",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    }
+  }
+  
